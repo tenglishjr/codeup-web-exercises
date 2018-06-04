@@ -1,0 +1,77 @@
+:root {
+    --skip-button-color: #C0FFFF;
+    --skip-button-border-color: 2px solid #d3d3d3;
+    --skip-button-text: #000000;
+    --skip-button-text-active: #ffffff;
+    --nav-bg: #d3d3d3;
+}
+
+body {
+    font-family: AppleGothic, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    /*border: 1px solid #000000;*/
+}
+
+.alert-info {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 65px;
+    background-color: var(--skip-button-color);
+    border: var(--skip-button-border-color);
+    border-radius: 5px;
+}
+
+.alert-info a:link {
+    color: var(--skip-button-text);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.alert-info a:active {
+    color: var(--skip-button-text-active);
+}
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 48px;
+}
+
+.nav-links {
+    list-style: none;
+    line-height: 3.5em;
+    text-align: center;
+    vertical-align: middle;
+    padding-left: 0px;
+}
+
+li {
+    margin: 0 .5em .5em .5em;
+    background-color: var(--nav-bg);
+}
+
+.header-img {
+    width: 339px;
+    height: 224px;
+    background-color: red;
+    margin: auto;
+}
+
+.main, .sub-section {
+    margin: .5em;
+}
+
+footer {
+    margin: .5em;
+    font-size: x-small;
+    float: left;
+}
+
+#social-media-links {
+    font-size: 1px;
+    width: 10px;
+    height: 10px;
+}
