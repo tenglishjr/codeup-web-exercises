@@ -5,16 +5,13 @@
     --skip-button-text-active: #ffffff;
     --nav-bg: #d3d3d3;
 }
-
 body {
     font-family: AppleGothic, sans-serif;
 }
-
 * {
     box-sizing: border-box;
     /*border: 1px solid #000000;*/
 }
-
 .alert-info {
     text-align: center;
     vertical-align: middle;
@@ -23,23 +20,19 @@ body {
     border: var(--skip-button-border-color);
     border-radius: 5px;
 }
-
 .alert-info a:link {
     color: var(--skip-button-text);
     font-size: 14px;
     text-decoration: none;
 }
-
 .alert-info a:active {
     color: var(--skip-button-text-active);
 }
-
 h1 {
     text-align: center;
     font-weight: bold;
     font-size: 48px;
 }
-
 .nav-links {
     list-style: none;
     line-height: 3.5em;
@@ -47,42 +40,34 @@ h1 {
     vertical-align: middle;
     padding-left: 0px;
 }
-
 li {
     margin: 0 .5em .5em .5em;
     background-color: var(--nav-bg);
 }
-
 .header-img {
     text-align: center;
     margin: 0 .5em 0 .5em;
 }
-
 img {
     width: 100%;
 }
-
 .main {
     margin: .5em;
 }
-
 .sub-section {
     margin: 3.5em .5em .5em .5em;
     font-style: italic;
 }
-
 footer p {
     margin-left: .5em;
     font-size: x-small;
     float: left;
 }
-
 #social-media-links {
     float: right;
     margin-right: 10px;
     margin-bottom: 10px;
 }
-
 .linked-in, .github, .twitter {
     width: 30px;
     height: 30px;
@@ -92,58 +77,48 @@ footer p {
     .hidden-on-desktop {
         display: none !important;
     }
-
     h1 {
         font-size: 36px;
         text-align: left;
         margin-left: .5em;
         float: left;
     }
-
     .nav-links {
         float: right;
         text-align: center;
     }
-
     li {
         display: inline-block;
         background-color: #ffffff;
     }
-
     .header-img {
         clear: both;
         margin: 0 1em 0 .5em;
         height: 385px;
     }
-
     img {
         width: 100%;
         height: 100%;
     }
-
     .main {
         float: left;
         width: 60%;
         margin-top: 2em;
     }
-
     .sub-section {
         margin: .5em .5em .5em .5em;
         width: 35%;
         float: right;
         margin-top: 2em;
     }
-
     footer {
         clear: both;
         margin-top: 30em;
     }
-
     footer p {
         font-size: small;
         padding-left: 0;
     }
-
     .linked-in, .github, .twitter {
         width: 40px;
         height: 40px;
