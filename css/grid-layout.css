@@ -1,11 +1,17 @@
 body {
     margin: 0;
     box-sizing: border-box;
+    background-image: url("../img/ocean-sunrise.jpg");
+    background-size: cover;
+    opacity: inherit;
 }
 
 .container {
+    padding: .5em 0;
     margin: 0 auto;
     width: 80%;
+    background-color: white;
+    height: 100vh;
     max-width: 1200px;
 }
 
@@ -44,4 +50,10 @@ p {
 .space {
     height: 20px;
     background: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+    .columns.one-half, .columns.one-third, .columns.one-fourth, .columns.one-eighth {
+        width: 100%;
+    }
 }
