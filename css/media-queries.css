@@ -6,24 +6,29 @@
     --nav-bg: #d3d3d3;
 }
 body {
-    font-family: AppleGothic, sans-serif;
+    font-family: Helvetica, sans-serif;
 }
 * {
     box-sizing: border-box;
-    /*border: 1px solid #000000;*/
 }
+
+ /* Mobile View */
 .alert-info {
-    text-align: center;
     vertical-align: middle;
-    line-height: 65px;
+}
+
+.alert-info a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
     background-color: var(--skip-button-color);
     border: var(--skip-button-border-color);
     border-radius: 5px;
+    padding: 15px;
 }
 .alert-info a:link {
     color: var(--skip-button-text);
     font-size: 14px;
-    text-decoration: none;
 }
 .alert-info a:active {
     color: var(--skip-button-text-active);
@@ -36,9 +41,14 @@ h1 {
 .nav-links {
     list-style: none;
     line-height: 3.5em;
-    text-align: center;
     vertical-align: middle;
-    padding-left: 0px;
+    padding-left: 0;
+}
+
+.nav-links a {
+    display: block;
+    text-align: center;
+    background: var(--skip-button-border-color);
 }
 li {
     margin: 0 .5em .5em .5em;
@@ -55,7 +65,7 @@ img {
     margin: .5em;
 }
 .sub-section {
-    margin: 3.5em .5em .5em .5em;
+    margin: 2em .5em .5em .5em;
     font-style: italic;
 }
 footer p {
@@ -73,6 +83,8 @@ footer p {
     height: 30px;
 }
 
+
+/* Desktop View */
 @media screen and (min-width: 768px) {
     .hidden-on-desktop {
         display: none !important;
@@ -86,6 +98,7 @@ footer p {
     .nav-links {
         float: right;
         text-align: center;
+        margin-right: .5em;
     }
     li {
         display: inline-block;
@@ -103,13 +116,12 @@ footer p {
     .main {
         float: left;
         width: 60%;
-        margin-top: 2em;
+        margin: 2em .5em;
     }
     .sub-section {
-        margin: .5em .5em .5em .5em;
         width: 35%;
         float: right;
-        margin-top: 2em;
+        margin: 2em .5em;
     }
     footer {
         clear: both;
