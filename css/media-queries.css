@@ -12,7 +12,9 @@ body {
     box-sizing: border-box;
 }
 
- /* Mobile View */
+                                    /*===================Mobile View===================*/
+
+/* Skip Button */
 .alert-info {
     vertical-align: middle;
 }
@@ -33,11 +35,15 @@ body {
 .alert-info a:active {
     color: var(--skip-button-text-active);
 }
+
+/* Company Header */
 h1 {
     text-align: center;
     font-weight: bold;
     font-size: 48px;
 }
+
+/* Navigation */
 .nav-links {
     list-style: none;
     line-height: 3.5em;
@@ -54,6 +60,8 @@ li {
     margin: 0 .5em .5em .5em;
     background-color: var(--nav-bg);
 }
+
+/* Main Image */
 .header-img {
     text-align: center;
     margin: 0 .5em 0 .5em;
@@ -61,18 +69,26 @@ li {
 img {
     width: 100%;
 }
+
+/* Main Section */
 .main {
     margin: .5em;
 }
+
+/* Sub-Section */
 .sub-section {
     margin: 2em .5em .5em .5em;
     font-style: italic;
 }
+
+/* Footer Elements */
 footer p {
     margin-left: .5em;
     font-size: x-small;
     float: left;
 }
+
+/* Social Media Icons */
 #social-media-links {
     float: right;
     margin-right: 10px;
@@ -84,14 +100,18 @@ footer p {
 }
 
 
-/* Desktop View */
+                                        /*=============Desktop View===============*/
+
 @media screen and (min-width: 768px) {
+
+    /* Hide Button */
     .hidden-on-desktop {
-        display: none !important;
+        display: none;
     }
+
+    /* Move Header and Nav Links to NavBar */
     h1 {
         font-size: 36px;
-        text-align: left;
         margin-left: .5em;
         float: left;
     }
@@ -104,6 +124,8 @@ footer p {
         display: inline-block;
         background-color: #ffffff;
     }
+
+    /* Resize Image */
     .header-img {
         clear: both;
         margin: 0 1em 0 .5em;
@@ -113,6 +135,8 @@ footer p {
         width: 100%;
         height: 100%;
     }
+
+    /* Main and Sub-Section Inline */
     .main {
         float: left;
         width: 60%;
@@ -123,6 +147,8 @@ footer p {
         float: right;
         margin: 2em .5em;
     }
+
+    /* Footer <p> and social icons */
     footer {
         clear: both;
         margin-top: 30em;
