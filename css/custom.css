@@ -1,0 +1,109 @@
+                                    /*================= Desktop View ================*/
+
+.navbar {
+    border-top: 2px solid var(--secondary);
+}
+
+.collapse.navbar-collapse a {
+    color: var(--secondary);
+}
+
+.company-separation {
+    font-size: 1.25em;
+}
+
+.btn-outline-success {
+    color: Tomato;
+    background-color: transparent;
+    background-image: none;
+    border-color: tomato;
+}
+
+.btn-outline-success:active {
+    background-color: Tomato;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+}
+
+.container-fluid {
+    width: 100%;
+    padding: 0;
+}
+
+.main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.jumbotron-fluid {
+    width: 100%;
+    border-radius: 0;
+    background-image: url("../img/pizza.png");
+    background-size: cover;
+}
+
+.jumbotron h1 {
+    width: 100%;
+    background-color: #FFFFFF;
+    opacity: 0.75;
+    text-align: center;
+}
+
+.container-fluid h2 {
+    color: var(--gray-dark);
+}
+
+.nav-tabs {
+    padding-top: 1em;
+}
+
+.nav-tabs > li span {
+    background-color: var(--secondary);
+    color: #FFFFFF;
+    vertical-align: top;
+}
+
+.card {
+    padding-left: 1px;
+}
+
+.card-header {
+    background-color: #D5EDF9;
+    color: #5493B0;
+}
+
+.card-header-sub {
+    background-color: var(--light);
+    color: var(--gray);
+    padding: .75rem 1.25rem;
+}
+
+.description {
+    padding-bottom: 1.5em;
+    color: var(--gray);
+}
+
+.size-choice {
+    background-color: #D5EDF9;
+    color: #5493B0;
+}
+
+.second-choice {
+    margin-top: 1em;
+}
+
+.card-footer {
+    text-align: right;
+    background-color: var(--light);
+}
+
+.cheese-amount {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+                                /*================ Mobile View ===================*/
+
+/*@media screen and (max-width: 768px) {*/
+        /**/
+/*}*/
