@@ -12,7 +12,7 @@ body {
     box-sizing: border-box;
 }
 
-                                    /*===================Mobile View===================*/
+/*===================Mobile View===================*/
 
 /* Skip Button */
 .alert-info {
@@ -67,17 +67,17 @@ li {
     margin: 0 .5em 0 .5em;
 }
 img {
-    width: 100%;
+    /*width: 100%;*/
 }
 
 /* Main Section */
 .main {
-    margin: .5em;
+    /*margin: .5em;*/
 }
 
 /* Sub-Section */
 .sub-section {
-    margin: 2em .5em .5em .5em;
+    /*margin: 2em .5em .5em .5em;*/
     font-style: italic;
 }
 
@@ -94,13 +94,13 @@ footer p {
     margin-right: 10px;
     margin-bottom: 10px;
 }
-.linked-in, .github, .twitter {
-    width: 30px;
-    height: 30px;
-}
+/*.linked-in, .github, .twitter {*/
+    /*width: 30px;*/
+    /*height: 30px;*/
+/*}*/
 
 
-                                        /*=============Desktop View===============*/
+/*=============Desktop View===============*/
 
 @media screen and (min-width: 768px) {
 
@@ -139,13 +139,13 @@ footer p {
     /* Main and Sub-Section Inline */
     .main {
         float: left;
-        width: 60%;
-        margin: 2em .5em;
+        /*width: 60%;*/
+        /*margin: 2em .5em;*/
     }
     .sub-section {
-        width: 35%;
+        /*width: 35%;*/
         float: right;
-        margin: 2em .5em;
+        /*margin: 2em .5em;*/
     }
 
     /* Footer <p> and social icons */
@@ -157,9 +157,9 @@ footer p {
         font-size: small;
         padding-left: 0;
     }
-    .linked-in, .github, .twitter {
-        width: 40px;
-        height: 40px;
-        margin-bottom: .5em;
-    }
+    /*.linked-in, .github, .twitter {*/
+        /*width: 40px;*/
+        /*height: 40px;*/
+        /*margin-bottom: .5em;*/
+    /*}*/
 }

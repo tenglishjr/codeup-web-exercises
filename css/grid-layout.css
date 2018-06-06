@@ -1,15 +1,13 @@
 body {
     margin: 0;
     box-sizing: border-box;
-    background-image: url("../img/ocean-sunrise.jpg");
-    background-size: cover;
+    /*background-image: url("../img/ocean-sunrise.jpg");*/
+    /*background-size: cover;*/
     opacity: inherit;
 }
 
 .container {
-    padding: .5em 0;
     margin: 0 auto;
-    width: 80%;
     background-color: white;
     height: 100vh;
     max-width: 1200px;
@@ -21,14 +19,13 @@ p {
 
 .rows {
     width: 100%;
-    margin-bottom: 3em;
 }
 
 .columns {
     float: left;
-    border: 1px solid black;
-    height: 2em;
-    background-color: #a4a4a4;
+    /*border: 1px solid black;*/
+    /*height: 2em;*/
+    /*background-color: #a4a4a4;*/
 }
 
 .columns.one-half {
@@ -37,6 +34,10 @@ p {
 
 .columns.one-third {
     width: calc(33.33% - 2px);
+}
+
+.columns.two-thirds {
+    width: calc(66.66% - 2px);
 }
 
 .columns.one-fourth {
@@ -53,7 +54,7 @@ p {
 }
 
 @media screen and (max-width: 768px) {
-    .columns.one-half, .columns.one-third, .columns.one-fourth, .columns.one-eighth {
+    .columns.one-half, .columns.one-third, .columns.two-thirds, .columns.one-fourth, .columns.one-eighth {
         width: 100%;
     }
 }
