@@ -8,14 +8,18 @@
     color: var(--secondary);
 }
 
+.navbar-brand {
+    font-family: "Poor Story";
+    font-size: 22px;
+}
+
 .company-separation {
     font-size: 1.25em;
 }
 
 .btn-outline-success {
     color: Tomato;
-    background-color: transparent;
-    background-image: none;
+    background: transparent none;
     border-color: tomato;
 }
 
@@ -47,6 +51,8 @@
     background-color: #FFFFFF;
     opacity: 0.75;
     text-align: center;
+    font-family: Exo;
+    font-size: 74px;
 }
 
 .container-fluid h2 {
@@ -60,7 +66,7 @@
 .nav-tabs > li span {
     background-color: var(--secondary);
     color: #FFFFFF;
-    vertical-align: top;
+    vertical-align: text-top;
 }
 
 .card {
@@ -81,6 +87,7 @@
 .description {
     padding-bottom: 1.5em;
     color: var(--gray);
+    font-style: italic;
 }
 
 .size-choice {
@@ -97,9 +104,23 @@
     background-color: var(--light);
 }
 
-.cheese-amount {
+.cheese-amount,
+.sauce-type,
+.sauce-amount {
     width: 100%;
     margin-top: 1rem;
+}
+
+.row {
+    width: 100%;
+}
+
+.column {
+    float: left;
+}
+
+.column.one-sixth {
+    width: 16.66%;
 }
 
                                 /*================ Mobile View ===================*/
