@@ -123,8 +123,11 @@
     width: 16.66%;
 }
 
-                                /*================ Mobile View ===================*/
 
-/*@media screen and (max-width: 768px) {*/
-        /**/
-/*}*/
+@media screen and (max-width: 1000px) {
+    .navbar-collapse a.social-icons {
+        display: inline-block;
+        float: left;
+        padding-left: .25em;
+    }
+}
