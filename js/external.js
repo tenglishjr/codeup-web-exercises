@@ -30,14 +30,14 @@ alert('Thanks!\n\nAt $3.00/day, your total should come out to $' + totalCost + '
 
 alert('Now, let\'s calculate how much money you should expect at the end of this week...');
 
-var googleHourlyRate = parseInt(prompt('How much does Google pay per hour?'));
-var googleTotalHours = parseInt(prompt('How many hours have you worked for Google this week?'));
+var googleHourlyRate = parseInt(prompt('How much does Google pay per hour?\n\n(Please only type integers, or program will crash...)'));
+var googleTotalHours = parseInt(prompt('How many hours have you worked for Google this week?\n\n(Please only type integers, or program will crash...)'));
 
-var amazonHourlyRate = parseInt(prompt('Great!\nHow much does Amazon pay per hour?'));
-var amazonTotalHours = parseInt(prompt('How many hours have you worked for Amazon this week?'));
+var amazonHourlyRate = parseInt(prompt('Great!\nHow much does Amazon pay per hour?\n\n(Please only type integers, or program will crash...)'));
+var amazonTotalHours = parseInt(prompt('How many hours have you worked for Amazon this week?\n\n(Please only type integers, or program will crash...)'));
 
-var facebookHourlyRate = parseInt(prompt('Cha-ching!\nHow much does Facebook pay per hour?'));
-var facebookTotalHours = parseInt(prompt('How many hours have you worked for Facebook this week?'));
+var facebookHourlyRate = parseInt(prompt('Cha-ching!\nHow much does Facebook pay per hour?\n\n(Please only type integers, or program will crash...)'));
+var facebookTotalHours = parseInt(prompt('How many hours have you worked for Facebook this week?\n\n(Please only type integers, or program will crash...)'));
 
 var totalWeeklyPay = googleHourlyRate * googleTotalHours;
 totalWeeklyPay += amazonHourlyRate * amazonTotalHours;
