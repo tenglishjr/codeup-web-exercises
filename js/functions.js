@@ -252,13 +252,12 @@ function rest(input) {
 
 function reverse(input) {
     var i, reverseInput = '';
-
     for (i = input.length; i >= 0; i--) {
         reverseInput += input.charAt(i);
     }
     return reverseInput;
 }
-// console.log(reverse('Antidisestablishmentarianism'));
+console.log(reverse('Antidisestablishmentarianism'));
 
 
 
