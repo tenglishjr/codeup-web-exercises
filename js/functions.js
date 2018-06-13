@@ -12,7 +12,7 @@
  */
 
 function sayHello(name) {
-    return name;
+    return 'Hello, ' + name;
 }
 
 /**
@@ -23,7 +23,8 @@ function sayHello(name) {
  * console.log 'helloMessage' to check your work
  */
 
-console.log(sayHello("TJ English"));
+var helloMessage = sayHello("TJ English");
+    console.log(helloMessage);
 
     /**
  * TODO:
@@ -61,10 +62,11 @@ var random = Math.floor((Math.random() * 3) + 1);
  */
 
 function isTwo(number) {
+    console.log('Random number: ' + number);
     return (number === 2);
 }
 
-// console.log(isTwo(random));
+console.log(isTwo(random));
 
 /**
  * TODO:
@@ -79,7 +81,9 @@ function isTwo(number) {
  */
 
 function calculateTip(percent, billTotal) {
-    return percent * billTotal;
+    percent = parseFloat(percent) / 100.0;
+    billTotal = parseFloat(billTotal.replace('$', ''));
+    return (percent * billTotal).toFixed(2);
 }
 
 /**
@@ -89,16 +93,7 @@ function calculateTip(percent, billTotal) {
  * then display the dollar amount they should tip
  */
 
-var amountToTip;
-var percentTip = prompt('Enter percentage you would like to tip:');
-var billTotal = prompt('Enter the total amount of your bill:');
-
-percentTip = parseFloat(percentTip) / 100.0;
-billTotal = parseFloat(billTotal.replace('$', ''));
-
-amountToTip = calculateTip(percentTip, billTotal);
-
-alert ('The amount you will tip equals:\n\n$' + amountToTip.toFixed(2));
+alert ('The amount you will tip equals:\n\n$' + calculateTip(prompt('Enter percentage you would like to tip:'), prompt('Enter the total amount of your bill:')));
 
 /**
  * TODO:
@@ -116,21 +111,13 @@ alert ('The amount you will tip equals:\n\n$' + amountToTip.toFixed(2));
  */
 
 function applyDiscount(initialPrice, discountPercent) {
+    initialPrice = parseFloat(initialPrice.replace('$', ''));
+    discountPercent = parseFloat(discountPercent) / 100.0;
     var discountAmount = initialPrice * discountPercent;
-    var newTotal = initialPrice - discountAmount;
-    return newTotal;
+    return (initialPrice - discountAmount).toFixed(2);
 }
 
-var newPrice;
-var originalPrice = prompt('What is the regular price of the item?');
-var discountPercent = prompt('What percentage is this item discounted?');
-
-originalPrice = parseFloat(originalPrice.replace('$', ''));
-discountPercent = parseFloat(discountPercent) / 100.0;
-
-newPrice = applyDiscount(originalPrice, discountPercent);
-
-alert('The new price (with discount applied) equals:\n\n$' + newPrice.toFixed(2));
+alert('The new price (with discount applied) equals:\n\n$' + applyDiscount(prompt('What is the regular price of the item?'), prompt('What percentage is this item discounted?')));
 
 // ==========================================BONUS EXERCISES===========================================
 
