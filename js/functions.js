@@ -1,5 +1,7 @@
 "use strict";
 
+(function (){
+
 /**
  * TODO:
  * Create a function called 'sayHello' that takes a parameter 'name'.
@@ -21,10 +23,9 @@ function sayHello(name) {
  * console.log 'helloMessage' to check your work
  */
 
-var helloMessage = sayHello("TJ English");
-// console.log(helloMessage);
+console.log(sayHello("TJ English"));
 
-/**
+    /**
  * TODO:
  * Store your name as a string in a variable named 'myName', and pass that
  * variable to the 'sayHello' function. You should see the same output in the
@@ -60,8 +61,7 @@ var random = Math.floor((Math.random() * 3) + 1);
  */
 
 function isTwo(number) {
-    var numberCheck = (number === 2);
-    return numberCheck;
+    return (number === 2);
 }
 
 // console.log(isTwo(random));
@@ -79,8 +79,7 @@ function isTwo(number) {
  */
 
 function calculateTip(percent, billTotal) {
-    var tipAmount = (percent * billTotal);
-    return tipAmount;
+    return percent * billTotal;
 }
 
 /**
@@ -199,20 +198,18 @@ function identity(input) {
 // Write a function called `getRandomNumber(min, max)` that returns a random number between min and max values sent to that function call.
 
 function getRandomNumber(min, max) {
-    var random = Math.floor(Math.random() * (max - min)) + min;
-    return random;
+    return Math.floor(Math.random() * (max - min)) + min;
 }
-// console.log(getRandomNumber(3, 199));
+console.log(getRandomNumber(3, 199));
 
 
 
 // Write a function called `first(input)` that returns the first character in the provided string.
 
 function first(input) {
-    var charAtIndex = input.charAt(0);
-    return charAtIndex;
+    return input.charAt(0);
 }
-// console.log(first('Antidisestablishmentarianism'));
+console.log(first('Antidisestablishmentarianism'));
 
 
 
@@ -231,10 +228,9 @@ function last(input) {
 // Write a function called `rest(input)` that returns everything but the first character of a string.
 
 function rest(input) {
-    var everythingButFirstChar = input.substring(1);
-    return everythingButFirstChar;
+    return input.substring(1);
 }
-// console.log(rest('Antidisestablishmentarianism'));
+console.log(rest('Antidisestablishmentarianism'));
 
 
 
@@ -260,8 +256,7 @@ console.log(reverse('How much wood could a woodchuck chuck if a woodchuck could 
 // Write a function called `isNumeric(input)` that takes an input and returns a boolean if the input is numeric.
 
 function isNumeric(input) {
-    var isANumber = !isNaN(input);
-    return isANumber;
+    return !isNaN(input);
 }
 // console.log(isNumeric('148'));
 
@@ -272,8 +267,7 @@ function isNumeric(input) {
 // Write a function called `count(input)` that takes in a string and returns the number of characters.
 
 function count(input) {
-    var charNumber = input.length;
-    return charNumber;
+    return input.length;
 }
 // console.log(count('Antidisestablishmentarianism'));
 
@@ -284,10 +278,9 @@ function count(input) {
 // Write a function called `add(a, b)` that returns the sum of a and b
 
 function add(a, b) {
-    var sum = a + b;
-    return sum;
+    return a + b;
 }
-// console.log(add(5, 8));
+console.log(add(5, 8));
 
 
 
@@ -296,10 +289,9 @@ function add(a, b) {
 // Write a function called `subtract(a, b)` that return the difference between the two inputs.
 
 function subtract(a, b) {
-    var subtraction = a - b;
-    return subtraction;
+    return a - b;
 }
-// console.log(subtract(15, 4));
+console.log(subtract(15, 4));
 
 
 
@@ -308,10 +300,9 @@ function subtract(a, b) {
 // Write `multiply(a, b)` function that returns the product
 
 function multiply(a, b) {
-    var multiplyInputs = a * b;
-    return multiplyInputs;
+    return a * b;
 }
-// console.log(multiply(5, 9));
+console.log(multiply(5, 9));
 
 
 
@@ -321,10 +312,9 @@ function multiply(a, b) {
 // Write a divide(numerator, denominator) function that returns a divided by b
 
 function divide(numerator, denominator) {
-    var divisionOfInputs = numerator / denominator;
-    return divisionOfInputs;
+    return numerator / denominator;
 }
-// console.log(divide(32, 8));
+console.log(divide(32, 8));
 
 
 
@@ -333,10 +323,9 @@ function divide(numerator, denominator) {
 // Write a remainder(number, divisor) function that returns the remainder left over when dividing `number` by the `divisor`
 
 function remainder(number, divisor) {
-    var remainderAfterDivision = number % divisor;
-    return remainderAfterDivision;
+    return number % divisor;
 }
-// console.log(remainder(34, 8));
+console.log(remainder(34, 8));
 
 
 
@@ -344,10 +333,9 @@ function remainder(number, divisor) {
 // Write the function `square(a)` that takes in a number and returns the number multiplied by itself.
 
 function square(a) {
-    var inputSquared = a * a;
-    return inputSquared;
+    return a * a;
 }
-// console.log(square(11));
+console.log(square(11));
 
 
 
@@ -357,10 +345,9 @@ function square(a) {
 // Write a function called sumOfSquares(a, b) that uses only your add() function and your square function and not + or * operators
 
 function sumOfSquares(a, b) {
-    var totalInputs = add(square(a), square(b));
-    return totalInputs;
+    return add(square(a), square(b));
 }
-// console.log(sumOfSquares(4, 5));
+console.log(sumOfSquares(4, 5));
 
 
 
@@ -369,8 +356,9 @@ function sumOfSquares(a, b) {
 // Write a function called doMath(operator, a, b) that takes 3 parameters. The first parameter is the name of the math function you want to apply. a and b are the two numbers to run that function on.
 
 function doMath(operator, a, b) {
-    var resultOfInputs = operator(a, b);
-    return resultOfInputs;
+    return operator(a, b);
 }
 console.log(doMath(multiply, 5, 6));
 
+
+})();
