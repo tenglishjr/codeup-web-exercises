@@ -11,7 +11,7 @@ var userFavColorAnswer = prompt('What is your favorite color?');
 alert('Awesome, ' + userFavColorAnswer + ' is my favorite color, too! :D ');
 
 
-// QUESTION 3 EXERCISES FROM PREVIOUS LESSON
+// 'QUESTION 3' EXERCISES FROM PREVIOUS LESSON
 
 // A)
 
@@ -30,22 +30,20 @@ alert('Thanks!\n\nAt $3.00/day, your total should come out to $' + totalCost + '
 
 alert('Now, let\'s calculate how much money you should expect at the end of this week...');
 
-var googleHourlyRate = parseInt(prompt('How much does Google pay per hour?\n\n(Please only type integers, or program will crash...)'));
-var googleTotalHours = parseInt(prompt('How many hours have you worked for Google this week?\n\n(Please only type integers, or program will crash...)'));
+var googleHourlyRate = 400;
+var googleTotalHours = parseInt(prompt('Google pays $' + googleHourlyRate + '/hr. How many hours have you worked for Google this week?\n\n(Please only type integers, or program will crash...)'));
 
-var amazonHourlyRate = parseInt(prompt('Great!\nHow much does Amazon pay per hour?\n\n(Please only type integers, or program will crash...)'));
-var amazonTotalHours = parseInt(prompt('How many hours have you worked for Amazon this week?\n\n(Please only type integers, or program will crash...)'));
+var amazonHourlyRate = 380;
+var amazonTotalHours = parseInt(prompt('Amazon pays $' + amazonHourlyRate + '/hr. How many hours have you worked for Amazon this week?\n\n(Please only type integers, or program will crash...)'));
 
-var facebookHourlyRate = parseInt(prompt('Cha-ching!\nHow much does Facebook pay per hour?\n\n(Please only type integers, or program will crash...)'));
-var facebookTotalHours = parseInt(prompt('How many hours have you worked for Facebook this week?\n\n(Please only type integers, or program will crash...)'));
+var facebookHourlyRate = 350;
+var facebookTotalHours = parseInt(prompt('Facebook pays $' + facebookHourlyRate + '/hr. How many hours have you worked for Facebook this week?\n\n(Please only type integers, or program will crash...)'));
 
 var totalWeeklyPay = googleHourlyRate * googleTotalHours;
 totalWeeklyPay += amazonHourlyRate * amazonTotalHours;
 totalWeeklyPay += facebookHourlyRate * facebookTotalHours;
 
-alert('Thanks for answering.\n\n\tPress okay to see how many fat stacks you should expect to receive this week!');
-
-alert('Your hard work this week will yield you a hefty payment of:\n\n$' + totalWeeklyPay + '.00.\nJACKPOT.');
+alert('Your hard work this week will yield you a hefty payment of:\n\n$' + totalWeeklyPay + '.00.\n\nJACKPOT.');
 
 
 // C)
@@ -69,19 +67,27 @@ if (studentEnrollmentEligibility === true) {
 
 // D)
 
-confirm('Want to utilize the discount for ShopMart? Answer a few short questions to determine eligibility!');
+var confirmation = confirm('Want to utilize the discount for ShopMart? Answer a few short questions to determine eligibility!');
 
-var productDiscountEligibility;
-var numberOfItemsMin = 3;
-var numberOfItemsInCart = parseInt(prompt('ShopMart requires a minimum of ' + numberOfItemsMin + ' items to use this discount.\n\nHow many items are you purchasing today?'));
-var isPremiumMember = confirm('Are you currently a Premium shopper at ShopMart?');
+if (confirmation === true) {
 
-productDiscountEligibility = (numberOfItemsInCart >= numberOfItemsMin) || isPremiumMember;
+    var productDiscountEligibility;
+    var numberOfItemsMin = 3;
+    var numberOfItemsInCart = parseInt(prompt('ShopMart requires a minimum of ' + numberOfItemsMin + ' items to use this discount.\n\nHow many items are you purchasing today?'));
+    var isPremiumMember = confirm('Are you currently a Premium shopper at ShopMart?');
 
-if (productDiscountEligibility === true) {
-    alert('Based on your responses...\n\nHooray, you are eligible for the ShopMart discount!');
+    productDiscountEligibility = (numberOfItemsInCart >= numberOfItemsMin) || isPremiumMember;
+
+    if (productDiscountEligibility === true) {
+        alert('Based on your responses...\n\nHooray, you are eligible for the ShopMart discount!');
+    } else {
+        alert('Based on your responses...\n\nWe\'re sorry, you do not qualify for the ShopMart discount.');
+    }
+
 } else {
-    alert('Based on your responses...\n\nWe\'re sorry, you do not qualify for the ShopMart discount.');
+
+    alert('Aww, man....');
+
 }
 
 
