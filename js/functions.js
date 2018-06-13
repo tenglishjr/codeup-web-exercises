@@ -90,16 +90,16 @@ function calculateTip(percent, billTotal) {
  * then display the dollar amount they should tip
  */
 
-// var amountToTip;
-// var percentTip = prompt('Enter percentage you would like to tip:');
-// var billTotal = prompt('Enter the total amount of your bill:');
-//
-// percentTip = parseFloat(percentTip) / 100.0;
-// billTotal = parseFloat(billTotal.replace('$', ''));
-//
-// amountToTip = calculateTip(percentTip, billTotal);
-//
-// alert ('The amount you will tip equals:\n\n$' + amountToTip.toFixed(2));
+var amountToTip;
+var percentTip = prompt('Enter percentage you would like to tip:');
+var billTotal = prompt('Enter the total amount of your bill:');
+
+percentTip = parseFloat(percentTip) / 100.0;
+billTotal = parseFloat(billTotal.replace('$', ''));
+
+amountToTip = calculateTip(percentTip, billTotal);
+
+alert ('The amount you will tip equals:\n\n$' + amountToTip.toFixed(2));
 
 /**
  * TODO:
@@ -116,22 +116,22 @@ function calculateTip(percent, billTotal) {
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
 
-// function applyDiscount(initialPrice, discountPercent) {
-//     var discountAmount = initialPrice * discountPercent;
-//     var newTotal = initialPrice - discountAmount;
-//     return newTotal;
-// }
-//
-// var newPrice;
-// var originalPrice = prompt('What is the regular price of the item?');
-// var discountPercent = prompt('What percentage is this item discounted?');
-//
-// originalPrice = parseFloat(originalPrice.replace('$', ''));
-// discountPercent = parseFloat(discountPercent) / 100.0;
-//
-// newPrice = applyDiscount(originalPrice, discountPercent);
-//
-// alert('The new price (with discount applied) equals:\n\n$' + newPrice.toFixed(2));
+function applyDiscount(initialPrice, discountPercent) {
+    var discountAmount = initialPrice * discountPercent;
+    var newTotal = initialPrice - discountAmount;
+    return newTotal;
+}
+
+var newPrice;
+var originalPrice = prompt('What is the regular price of the item?');
+var discountPercent = prompt('What percentage is this item discounted?');
+
+originalPrice = parseFloat(originalPrice.replace('$', ''));
+discountPercent = parseFloat(discountPercent) / 100.0;
+
+newPrice = applyDiscount(originalPrice, discountPercent);
+
+alert('The new price (with discount applied) equals:\n\n$' + newPrice.toFixed(2));
 
 // ==========================================BONUS EXERCISES===========================================
 
@@ -142,7 +142,6 @@ function calculateTip(percent, billTotal) {
 function returnTwo() {
     return 2;
 }
-// ---Test this function with
 // console.log(returnTwo());
 
 
@@ -151,7 +150,6 @@ function returnTwo() {
 function returnName() {
     return "TJ English";
 }
-// ---Test this function with
 // console.log(returnName());
 
 
@@ -160,7 +158,6 @@ function returnName() {
 function addThree(number) {
     return (number + 3);
 }
-// ---Test this function with
 // console.log(addThree(5));
 
 
@@ -169,7 +166,6 @@ function addThree(number) {
 function sayString(stringInput) {
     return stringInput;
 }
-// ---Test this function with
 // console.log(sayString("What's up!"));
 
 
@@ -178,8 +174,6 @@ function sayString(stringInput) {
 function sayHowdy() {
     console.log("Howdy!");
 }
-// ---Test this function by directly calling sayHowdy()
-// ---Remember this function does not need a defined return value
 // sayHowdy();
 
 
@@ -187,7 +181,7 @@ function sayHowdy() {
 
 
 
-// ================ CHALLENGE FUNCTION DRILLS
+// ================ CHALLENGING FUNCTION DRILLS
 
 
 
@@ -257,7 +251,7 @@ function reverse(input) {
     }
     return reverseInput;
 }
-console.log(reverse('Antidisestablishmentarianism'));
+console.log(reverse('How much wood could a woodchuck chuck if a woodchuck could chuck wood?'));
 
 
 
@@ -378,5 +372,5 @@ function doMath(operator, a, b) {
     var resultOfInputs = operator(a, b);
     return resultOfInputs;
 }
-// console.log(doMath(multiply, 5, 6));
+console.log(doMath(multiply, 5, 6));
 
