@@ -62,11 +62,7 @@ var numberEntered = 0;
 if (didConfirm) {
     numberEntered = prompt('Enter the number:');
 
-    if (isNaN(parseInt(numberEntered))) {
-
-        alert('\"' + numberEntered + '\" is not a number! Please refresh and try again.');
-
-    } else {
+    if (!isNaN(numberEntered) && numberEntered !== true && numberEntered !== false && numberEntered !== '') {
 
         isOdd(numberEntered);
 
@@ -74,6 +70,8 @@ if (didConfirm) {
 
         isNegative(numberEntered)
 
+    } else {
+        alert('Not a valid number!');
     }
 }
 
