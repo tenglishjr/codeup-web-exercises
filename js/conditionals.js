@@ -1,5 +1,7 @@
 "use strict";
 
+(function (){
+
 /**
  * TODO:
  * Write some JavaScript that uses a `confirm` dialog to ask the user if they
@@ -15,6 +17,66 @@
  *
  * Can you refactor your code to use functions?
  */
+
+
+// ================= FUNCTIONS
+
+
+function isOdd (num) {                  // Checks if number is odd or even.
+    var isOddNumber = parseInt(num) % 2;
+
+    if (isOddNumber) {
+        return alert(num + ' is odd.');
+    } else {
+        return alert(numberEntered + ' is even.');
+    }
+}
+
+
+
+function addHundred (num) {             // Adds number to 100.
+    num = parseInt(num);
+    return alert(num + ' + 100 = ' + (num + 100));
+}
+
+
+
+function isNegative(num) {              // Checks if number is negative or positive, or zero.
+    num = parseInt(num);
+
+    if (num < 0)
+        return alert(num + ' is negative.');
+    else if (num > 0)
+        return alert(num + ' is positive.');
+    else
+        return alert(num + ' is neither positive nor negative.');
+}
+
+
+
+
+// ================= NUMBER CHECK
+var didConfirm = confirm('Would you like to enter a number?');
+var numberEntered = 0;
+
+if (didConfirm) {
+    numberEntered = prompt('Enter the number:');
+
+    if (isNaN(parseInt(numberEntered))) {
+
+        alert('\"' + numberEntered + '\" is not a number! Please refresh and try again.');
+
+    } else {
+
+        isOdd(numberEntered);
+
+        addHundred(numberEntered);
+
+        isNegative(numberEntered)
+
+    }
+}
+
 
 /* ########################################################################## */
 
@@ -36,6 +98,38 @@
  * console.logging the function's return value
  */
 
+// ===================== FUNCTION =====================
+
+/*
+    function analyzeColor(color) {
+
+    color = color.toLowerCase();
+
+    if (color === 'blue')
+        return 'Blue is the color of the sky.';
+    else if (color === 'red')
+        return 'Firetrucks are red.';
+    else if (color === 'yellow')
+        return 'Lemons are yellow.';
+    else if (color === 'purple')
+        return 'Purple is often the color of an eggplant.';
+    else
+        return 'I don\'t know that color...try refreshing and enter a different color.';
+}     */
+
+
+
+// INPUT
+    var colorChoice = 'PURPLE';
+
+// Use of Function analyzeColor() & Display of Feedback
+ //   console.log(analyzeColor(colorChoice));
+
+
+
+
+
+
 // Don't change the next two lines!
 // These lines create two variables for you:
 // - `colors`: a list of the colors of the rainbow
@@ -49,10 +143,48 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * You should see a different message every time you refresh the page
  */
 
-/**
+console.log(analyzeColor(randomColor));
+
+
+    /**
  * TODO:
  * Refactor your above function to use a switch-case statement
  */
+
+function analyzeColor1(color) {
+    color = color.toLowerCase();
+
+
+    switch (color) {
+
+        case 'blue':
+            alert('Blue is the color of the sky.');
+            break;
+        case 'red':
+            alert('Firetrucks are red.');
+            break;
+        case 'orange':
+            alert('Oranges are...orange...');
+            break;
+        case 'green':
+            alert('Green is the color of healthy grass.');
+            break;
+        case 'yellow':
+            alert('Lemons are yellow.');
+            break;
+        case 'indigo':
+            alert('I don\'t know anything about indigo...');
+            break;
+        case 'violet':
+            alert('Violet is often the color of an eggplant.');
+            break;
+        default:
+            alert('I don\'t know that color...try refreshing and enter a different color.');
+    }
+}
+
+
+
 
 /**
  * TODO:
@@ -60,6 +192,8 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * user to your `analyzeColor` function. Alert the return value from your
  * function to show it to the user.
  */
+
+analyzeColor1(prompt('Enter a color:'));
 
 /* ########################################################################## */
 
@@ -83,12 +217,61 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * return value.
  */
 
-/**
- * TODO:
- * Uncomment the line below to generate a random number between 0 and 6.
- * Prompt the user for their total bill, then use your `calculateTotal` function
- * and alerts to display to the user what their lucky number was, what their
- * price before the discount was, and what their price after the discount is.
- */
+// ================== FUNCTIONS =================
+
+    function calculateTotal(luckyNumber, totalAmount) {
+
+    luckyNumber = parseInt(luckyNumber);
+    totalAmount = parseFloat(totalAmount.replace('$', ''));
+
+    if (totalAmount <= 0 || isNaN(totalAmount))
+        return 'INVALID AMOUNT. Please refresh and try again.';
+
+    else {
+
+        switch (luckyNumber) {
+
+            case 0:
+                return '$' + totalAmount.toFixed(2);
+                break;
+            case 1:
+                return '$' + (totalAmount - (totalAmount * 0.10)).toFixed(2);
+                break;
+            case 2:
+                return '$' + (totalAmount - (totalAmount * 0.25)).toFixed(2);
+                break;
+            case 3:
+                return '$' + (totalAmount - (totalAmount * 0.35)).toFixed(2);
+                break;
+            case 4:
+                return '$' + (totalAmount - (totalAmount * 0.50)).toFixed(2);
+                break;
+            case 5:
+                return '$' + 0;
+                break;
+            default:
+                return 'That lucky number is invalid. Please try again.';
+
+        }
+    }
+}
+
+
+// TESTING
+    console.log(calculateTotal('0', '$17.33'));
+
+
+    /**
+     * TODO:
+     * Uncomment the line below to generate a random number between 0 and 6.
+     * Prompt the user for their total bill, then use your `calculateTotal` function
+     * and alerts to display to the user what their lucky number was, what their
+     * price before the discount was, and what their price after the discount is.
+     */
 // Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+    var luckyNumber = Math.floor(Math.random() * 6);
+
+    alert('-- LUCKY NUMBER DISCOUNT --\n\nTotal with discount applied:\n\n' + calculateTotal(luckyNumber, prompt('-- LUCKY NUMBER DISCOUNT --\n\nPlease enter the total on your bill:')));
+
+})();
+
