@@ -98,30 +98,47 @@ if (didConfirm) {
 
 // ===================== FUNCTION =====================
 
-/*
+
     function analyzeColor(color) {
 
     color = color.toLowerCase();
 
-    if (color === 'blue')
-        return 'Blue is the color of the sky.';
-    else if (color === 'red')
-        return 'Firetrucks are red.';
-    else if (color === 'yellow')
-        return 'Lemons are yellow.';
-    else if (color === 'purple')
-        return 'Purple is often the color of an eggplant.';
-    else
-        return 'I don\'t know that color...try refreshing and enter a different color.';
-}     */
+    // if (color === 'blue')
+    //     return 'Blue is the color of the sky.';
+    // else if (color === 'red')
+    //     return 'Firetrucks are red.';
+    // else if (color === 'yellow')
+    //     return 'Lemons are yellow.';
+    // else if (color === 'purple')
+    //     return 'Purple is often the color of an eggplant.';
+    // else
+    //     return 'I don\'t know ' + color + '...try refreshing and enter a different color.';
 
+    var output;
 
+    switch (color) {
 
-// INPUT
-    var colorChoice = 'PURPLE';
+        case 'blue':
+            output =  ('Blue is the color of the sky.');
+            break;
+        case 'red':
+            output =  ('Firetrucks are red.');
+            break;
+        case 'yellow':
+            output =  ('Lemons are yellow.');
+            break;
+        case 'violet':
+            output =  ('Violet is often the color of an eggplant.');
+            break;
+        default:
+            output =  ('I don\'t know ' + color + '...try refreshing and enter a different color.');
+    }
+
+    return output;
+}
 
 // Use of Function analyzeColor() & Display of Feedback
- //   console.log(analyzeColor(colorChoice));
+ //   console.log(analyzeColor('purple'));
 
 
 
@@ -149,40 +166,6 @@ console.log(analyzeColor(randomColor));
  * Refactor your above function to use a switch-case statement
  */
 
-function analyzeColor1(color) {
-    color = color.toLowerCase();
-
-
-    switch (color) {
-
-        case 'blue':
-            alert('Blue is the color of the sky.');
-            break;
-        case 'red':
-            alert('Firetrucks are red.');
-            break;
-        case 'orange':
-            alert('Oranges are...orange...');
-            break;
-        case 'green':
-            alert('Green is the color of healthy grass.');
-            break;
-        case 'yellow':
-            alert('Lemons are yellow.');
-            break;
-        case 'indigo':
-            alert('I don\'t know anything about indigo...');
-            break;
-        case 'violet':
-            alert('Violet is often the color of an eggplant.');
-            break;
-        default:
-            alert('I don\'t know that color...try refreshing and enter a different color.');
-    }
-}
-
-
-
 
 /**
  * TODO:
@@ -191,7 +174,7 @@ function analyzeColor1(color) {
  * function to show it to the user.
  */
 
-analyzeColor1(prompt('Enter a color:'));
+alert(analyzeColor(prompt('Enter a color:')));
 
 /* ########################################################################## */
 
@@ -215,48 +198,53 @@ analyzeColor1(prompt('Enter a color:'));
  * return value.
  */
 
-// ================== FUNCTIONS =================
+// ================== FUNCTION =================
 
     function calculateTotal(luckyNumber, totalAmount) {
 
-    luckyNumber = parseInt(luckyNumber);
     totalAmount = parseFloat(totalAmount.replace('$', ''));
 
-    if (totalAmount <= 0 || isNaN(totalAmount))
-        return 'INVALID AMOUNT. Please refresh and try again.';
+    if (totalAmount > 0 && !isNaN(totalAmount) && totalAmount !== '') {
 
-    else {
+        var output;
 
         switch (luckyNumber) {
 
             case 0:
-                return '$' + totalAmount.toFixed(2);
+                output = '$' + totalAmount.toFixed(2);
                 break;
             case 1:
-                return '$' + (totalAmount - (totalAmount * 0.10)).toFixed(2);
+                output = '$' + (totalAmount * 0.90).toFixed(2);
                 break;
             case 2:
-                return '$' + (totalAmount - (totalAmount * 0.25)).toFixed(2);
+                output = '$' + (totalAmount * 0.75).toFixed(2);
                 break;
             case 3:
-                return '$' + (totalAmount - (totalAmount * 0.35)).toFixed(2);
+                output = '$' + (totalAmount * 0.65).toFixed(2);
                 break;
             case 4:
-                return '$' + (totalAmount - (totalAmount * 0.50)).toFixed(2);
+                output = '$' + (totalAmount * 0.50).toFixed(2);
                 break;
             case 5:
-                return '$' + 0;
+                output = '$' + 0;
                 break;
             default:
-                return 'That lucky number is invalid. Please try again.';
+                output = 'That lucky number is invalid. Please try again.';
 
         }
+
+        return output;
+
+    } else {
+
+        return 'INVALID AMOUNT. Please refresh and try again.';
+
     }
 }
 
 
 // TESTING
-    console.log(calculateTotal('0', '$17.33'));
+    console.log(calculateTotal(3, '$17.33'));     // I/O:  $11.26
 
 
     /**
@@ -269,7 +257,11 @@ analyzeColor1(prompt('Enter a color:'));
 // Generate a random number between 0 and 6
     var luckyNumber = Math.floor(Math.random() * 6);
 
-    alert('-- LUCKY NUMBER DISCOUNT --\n\nTotal with discount applied:\n\n' + calculateTotal(luckyNumber, prompt('-- LUCKY NUMBER DISCOUNT --\n\nPlease enter the total on your bill:')));
+    var billTotal = prompt('-- LUCKY NUMBER DISCOUNT --\n\nPlease enter the total on your bill:');
+    var res = calculateTotal(luckyNumber, billTotal);
+
+    alert('-- LUCKY NUMBER DISCOUNT --\n\nTotal with discount applied:\n\n' + res);
+
 
 })();
 
