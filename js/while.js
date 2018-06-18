@@ -25,10 +25,8 @@ do {
         console.log(purchasedCones + ' cones sold...' + allCones + ' cones left!');
     } else if (purchasedCones > allCones) {
         console.log('Cannot sell you ' + purchasedCones + ' cones...I only have ' + allCones + ' left!');
-        continue;
     } else {
         console.log(purchasedCones + ' cones sold...Yay! I sold them all!');
-        break;
     }
 
 } while (allCones > 0);
