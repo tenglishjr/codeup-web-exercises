@@ -21,7 +21,11 @@ function printOddNumbers() {
     console.log(' ');
 
 
-    for (var i = 1; i < 50; i += 2) {
+    for (var i = 1; i < 50; i++) {
+        if (i % 2 !== 0) {
+            continue;
+        }
+
         if (i === parseInt(num)) {
             console.log('Yikes! Skipping number: ' + i);
             continue;
