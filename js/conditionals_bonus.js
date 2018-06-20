@@ -238,19 +238,17 @@ function conversionCalculator(firstUnit, value, secondUnit) {
 
     var output;
 
-    while (output === undefined) {
-
         switch (firstUnit) {
 
-            case 'inches' || 'in':
+            case 'inches':
                 switch (secondUnit) {
-                    case 'feet' || 'ft':
+                    case 'feet':
                         output = inchesToFeet(value);
                         break;
-                    case 'miles' || 'mi':
+                    case 'miles':
                         output = feetToMiles(inchesToFeet(value));
                         break;
-                    case 'lightyears' || 'ly':
+                    case 'lightyears':
                         output = milesToLightYears(feetToMiles(inchesToFeet(value)));
                         break;
                     default:
@@ -258,15 +256,16 @@ function conversionCalculator(firstUnit, value, secondUnit) {
                         output = false;
                         break;
                 }
-            case 'feet' || 'ft':
+                break;
+            case 'feet':
                 switch (secondUnit) {
-                    case 'inches' || 'in':
+                    case 'inches':
                         output = feetToInches(value);
                         break;
-                    case 'miles' || 'mi':
+                    case 'miles':
                         output = feetToMiles(value);
                         break;
-                    case 'lightyears' || 'ly':
+                    case 'lightyears':
                         output = milesToLightYears(feetToMiles(value));
                         break;
                     default:
@@ -274,15 +273,16 @@ function conversionCalculator(firstUnit, value, secondUnit) {
                         output = false;
                         break;
                 }
-            case 'miles' || 'mi':
+                break;
+            case 'miles':
                 switch (secondUnit) {
-                    case 'inches' || 'in':
+                    case 'inches':
                         output = feetToInches(milesToFeet(value));
                         break;
-                    case 'feet' || 'ft':
+                    case 'feet':
                         output = milesToFeet(value);
                         break;
-                    case 'lightyears' || 'ly':
+                    case 'lightyears':
                         output = milesToLightYears(value);
                         break;
                     default:
@@ -290,15 +290,16 @@ function conversionCalculator(firstUnit, value, secondUnit) {
                         output = false;
                         break;
                 }
-            case 'lightyears' || 'ly':
+                break;
+            case 'lightyears':
                 switch (secondUnit) {
-                    case 'inches' || 'in':
+                    case 'inches':
                         output = feetToInches(milesToFeet(lightYearsToMiles(value)));
                         break;
-                    case 'feet' || 'ft':
+                    case 'feet':
                         output = milesToFeet(lightYearsToMiles(value));
                         break;
-                    case 'miles' || 'mi':
+                    case 'miles':
                         output = lightYearsToMiles(value);
                         break;
                     default:
@@ -306,11 +307,10 @@ function conversionCalculator(firstUnit, value, secondUnit) {
                         output = false;
                         break;
                 }
+                break;
             default:
-                invalidInputAlertMessage();
                 output = false;
         }
-    }
 
     return output;
 }
@@ -319,14 +319,18 @@ function conversionCalculator(firstUnit, value, secondUnit) {
 // APP EXECUTION
 
 function conversionApp() {
-    var firstUnit = prompt('Enter the first unit:');
-    var numberToConvert = parseFloat(prompt('Enter the number you wish to convert:'));
-    var secondUnit = prompt('Enter the unit you wish to convert to:');
 
     while (true) {
 
-        if (conversionCalculator(firstUnit, numberToConvert, secondUnit) !== false) {
-            return conversionCalculator(firstUnit, numberToConvert, secondUnit);
+        var result;
+        var firstUnit = prompt('Enter the first unit:');
+        var numberToConvert = parseFloat(prompt('Enter the number you wish to convert:'));
+        var secondUnit = prompt('Enter the unit you wish to convert to:');
+
+        result = conversionCalculator(firstUnit, numberToConvert, secondUnit);
+
+        if (result !== false && !isNaN(result)) {
+            return (numberToConvert + ' ' + firstUnit + ' = ' + result.toFixed(0) + ' ' + secondUnit);
         } else {
             invalidInputAlertMessage();
         }
