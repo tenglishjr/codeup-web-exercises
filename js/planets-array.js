@@ -46,4 +46,55 @@
     console.log("Sorting the planets array.");
     planets.sort();
     console.log(planets);
+
+
+    // ======= BONUS EXERCISES ========
+
+
+    // Bonus #1
+
+    function charToggle(str) {
+
+        console.log(str);
+
+        var strArray = str.split('');
+        var oppCaseChar = [];
+
+        strArray.forEach( function (char) {
+            if (char === char.toLowerCase()) {
+                oppCaseChar.push(char.toUpperCase());
+            } else if (char === char.toUpperCase()) {
+                oppCaseChar.push(char.toLowerCase());
+            } else {
+                oppCaseChar.push(char);
+            }
+        })
+
+        var strOutput = oppCaseChar.join('');
+
+        return strOutput;
+
+    }
+
+    // console.log(charToggle('DEfgHiJK12#'));
+
+
+    // Bonus #2
+
+    function matchLengthAndNumber(strWithNumber) {
+
+        console.log(strWithNumber);
+
+        if (strWithNumber.length == strWithNumber[strWithNumber.length - 1]) {
+            return 'Yes';
+        } else {
+            return 'No';
+        }
+    }
+
+    // console.log(matchLengthAndNumber('superman9'));
+
+
+
+
 })();
