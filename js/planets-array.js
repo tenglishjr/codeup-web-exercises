@@ -79,7 +79,7 @@
     // console.log(charToggle('DEfgHiJK12#'));
 
 
-    // Bonus #2
+    // ==== Bonus #2
 
     function matchLengthAndNumber(strWithNumber) {
 
