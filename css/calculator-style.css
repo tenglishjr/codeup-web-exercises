@@ -1,3 +1,35 @@
-.container-fluid {
-    background-color: #848487;
+.navbar .navbar-text {
+    color: #afafaf;
+    font-weight: bold;
+    font-size: 1.5em;
+    font-family: AppleGothic, Helvetica, sans-serif;
+    padding: 0 2.5em;
+}
+
+.row .empty-div {
+    line-height: 50px;
+}
+
+.card-header {
+    background-color: #1F232D;
+}
+
+.left-operand,
+.right-operand,
+.operator {
+    line-height: 1.75em;
+    border-width: 1.75px;
+    border-radius: 5%;
+    background-color: #1F232D;
+    color: #FFFFFF;
+    font-size: 1.5em;
+}
+
+.left-operand,
+.right-operand {
+    width: 142px;
+}
+
+.operator {
+    width: 43px;
 }
