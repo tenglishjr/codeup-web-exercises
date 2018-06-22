@@ -47,11 +47,10 @@
         // TODO: Set text color of li with dbid = 1 to blue
 
         for (var i = 0; i < listItems.length; i++) {
-            if (i % 2 === 0) {
-                listItems[i].style.color = 'grey';
-            }
             if ((listItems[i].getAttribute('data-dbid')) === '1') {
                 listItems[i].style.color = 'blue';
+            } else if (i % 2 === 0) {
+                listItems[i].style.color = 'grey';
             }
         }
 
@@ -87,19 +86,18 @@
         //     triggered: false,
         //     intervalID: null,
         //     play: function () {
-        //         var i = 0;
         //         if (this.triggered === false) {
+        //             var i = 0;
         //             this.intervalID = setInterval(function () {
-        //                 if (i === lyrics.length) {
-        //                     this.triggered = true;
-        //                     alert('POP!');
-        //                     clearInterval(this.intervalID);
-        //                 } else {
-        //                     document.getElementsByTagName('body').innerHTML = lyrics[i];
+        //                     document.getElementById('main-header').innerHTML = lyrics[i];
         //                     console.log(lyrics[i]);
         //                     i++;
+        //                 if (i >= lyrics.length) {
+        //                     alert('POP!');
+        //                     clearInterval(jackBox.intervalID);
         //                 }
         //             }, 1000);
+        //             this.triggered = true;
         //         }
         //     },
         //     windUp: function () {
@@ -108,7 +106,31 @@
         //     }
         // };
         //
+        // // Plays the jackBox, then stops after 6 seconds
         // jackBox.play();
+        // setTimeout(function () {jackBox.windUp()}, 6000);
+        //
+        // // ============================================
+        //
+        // var stopWatch = {
+        //     intervalID: null,
+        //     count: 0,
+        //     start: function () {
+        //         this.intervalID = setInterval(function () {
+        //             console.log(count);
+        //             count++;
+        //         })
+        //     },
+        //     pause: function () {
+        //         clearInterval(this.intervalID);
+        //     },
+        //     reset: function () {
+        //         clearInterval(this.intervalID);
+        //         this.count = 0;
+        //     }
+        // };
+
+
 
 
     })();
