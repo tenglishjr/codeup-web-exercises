@@ -28,10 +28,30 @@ $(function () {
     /**======= jQuery Events =======**/
 
         /* Just for fun */
-        $('h1').click(function () {
-            setInterval(function (){$('p').toggle(500)},500);
-        })
 
+        // $('*').css('background-color', '#06070E').css('color', 'papayawhip');
+        //
+        // $('button').click(function () {
+        //     $('h1').css('color', 'red').css('background-color', '').toggle('#codeup');
+        // })
+
+    $('h1').click(function () {
+        $('body').css('background', '#C8E0F4');
+    });
+
+    $('p').dblclick(function () {
+        $('p').css('font-size', '18px');
+    });
+
+    $('li').hover(
+        function () {
+            $('li').css('color', 'red');
+        },
+
+        function () {
+            $('li').css('color', 'black');
+        }
+    );
 
 
 });
