@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+</head>
+<body>
+<h1>Konami Code</h1>
+
+<script src="js/jquery-2.2.4.js"></script>
+<script>
+    "use strict";
+
+        var keySequence = {
+            38: 'up',
+            40: 'down',
+            37: 'left',
+            39: 'right',
+            66: 'b',
+            65: 'a',
+            13: 'enter'
+        };
+        var konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a', 'enter'];
+
+        var codePosition = 0;
+
+
+
+
+    $(document).keyup(function(event){
+
+        var key = keySequence[event.keyCode];
+        var requiredKey = konamiCode[codePosition];
+        console.log('Key pressed: ' + key);
+
+        if (key == requiredKey) {
+            codePosition++;
+
+            if (codePosition === konamiCode.length) {
+                cheatCodeActivate();
+                codePosition = 0;
+            }
+        }else {
+                codePosition = 0;
+            }
+        });
+
+
+        function cheatCodeActivate() {
+            console.log('Worked');
+            alert('success!!!!!!!!!111!!1')
+        }
+
+</script>
+</body>
+</html>
+
+<!--var audio = new Audio('audio/pling.mp3');-->
+<!--audio.play();-->
