@@ -39,10 +39,13 @@
 
         <script src="js/jquery-2.2.4.js"></script>
         <script>
-            "use strict";
+
+            (function () {
+                "use strict";
 
 
-                var keySequence = {
+                // Key Codes object, for comparison test
+                var keyCodes = {
                     38: 'up',
                     40: 'down',
                     37: 'left',
@@ -51,10 +54,18 @@
                     65: 'a',
                     13: 'enter'
                 };
-                var konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a', 'enter'];
 
+                // Correct key sequence
+                var konamiCodeSequence = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a', 'enter'];
+
+
+                // Progression through correct sequence
                 var codePosition = 0;
 
+
+                /**===== Music/Sound Stuffs =====**/
+
+                // BG Music
                 var bgMusicObj = document.createElement('audio');
                 bgMusicObj.src = 'audio/01 - Super Mario Bros.mp3';
                 bgMusicObj.volume = 0.1;
@@ -62,6 +73,7 @@
                 bgMusicObj.preLoad = true;
                 bgMusicObj.controls = true;
 
+                // 'Correct key entered' Sound
                 var fireballObj = document.createElement('audio');
                 fireballObj.src = 'audio/smb_fireball.wav';
                 fireballObj.volume = 0.2;
@@ -69,6 +81,7 @@
                 fireballObj.preLoad = true;
                 fireballObj.controls = true;
 
+                // 'Correct Key Sequence entered' Sound
                 var oneUpObj = document.createElement('audio');
                 oneUpObj.src = 'audio/smb_1-up.wav';
                 oneUpObj.volume = 0.3;
@@ -76,41 +89,80 @@
                 oneUpObj.preLoad = true;
                 oneUpObj.controls = true;
 
+                // 'Down the Pipe' Sound
+                var pipeDownObj = document.createElement('audio');
+                pipeDownObj.src = 'audio/smb_pipe.wav';
+                pipeDownObj.volume = 0.3;
+                pipeDownObj.autoPlay = false;
+                pipeDownObj.preLoad = true;
+                pipeDownObj.controls = true;
+
+                // Plays BG Music
                 bgMusicObj.play();
+
+                /**=============================**/
+
+
+                // Konami Code Test
             $(document).keyup(function(event){
 
-                var key = keySequence[event.keyCode];
-                var requiredKey = konamiCode[codePosition];
+                var key = keyCodes[event.keyCode];
+                var requiredKey = konamiCodeSequence[codePosition];
                 console.log('Key pressed: ' + key);
 
+
+                // If key pressed matches the current required key in Konami Code sequence...
                 if (key == requiredKey) {
+
+                    // Increments codePosition if correct key is entered, notifies User with blip
                     fireballObj.play();
                     codePosition++;
 
-                    if (codePosition === konamiCode.length) {
+
+                    // If the codePosition equals the length of Konami Code sequence (a.k.a. full Konami Code has been entered...)
+                    if (codePosition === konamiCodeSequence.length) {
+
+                        // Calls cheatCodeActivate upon correct sequence
                         cheatCodeActivate();
+
+                        // Resets codePosition back to zero, for repeated use
                         codePosition = 0;
                     }
+
+
                 } else {
-                        codePosition = 0;
-                    }
-                });
+
+                    // Resets sequence position if incorrect key is entered
+                    codePosition = 0;
+                }
+            });
 
 
+
+                // If Konami Code is entered...
                 function cheatCodeActivate() {
                     oneUpObj.play();
                     $('body').css('overflow', 'hidden');
-                    $('#oneUpPopup').fadeIn();
+                    $('#oneUpPopup')
+                        .fadeIn()
+                        .animate({ width: '285px'}, 200)
+                        .animate({ height: '285px'}, 200);
                     $('#privateBG').fadeIn();
 
                     setTimeout(function () {
-                        $("#oneUpPopup").fadeOut();
-                        $("#privateBG").fadeOut();
+                        $("#oneUpPopup")
+                            .animate({ height: ''}, 200)
+                            .animate({ width: ''}, 200)
+                            .animate({ marginBottom: '200px'}, 200)
+                            .fadeOut('fast', function () {});
+                        $("#privateBG")
+                            .fadeOut();
+                        pipeDownObj.play();
                         $("body").css("overflow", "auto");
-                    }, 5000);
-
-                    console.log('Worked');
+                    }, 4000);
                 }
+
+            })();
 
         </script>
 
