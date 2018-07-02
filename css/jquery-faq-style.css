@@ -1,0 +1,12 @@
+.invisible {
+    display: none;
+}
+
+dd {
+    font-size: 14px;
+}
+
+.highlight {
+    background-color: #54ADE8;
+    opacity: 0.7;
+}
