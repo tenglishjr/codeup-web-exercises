@@ -7,6 +7,9 @@ dd {
 }
 
 .highlight {
-    background-color: #54ADE8;
-    opacity: 0.7;
+    background-color: rgba(229,255,19,0.6)
+}
+
+ul h3 {
+    background-color: rgba(154,150,158,0.53);
 }
