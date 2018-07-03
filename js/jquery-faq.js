@@ -62,24 +62,34 @@ $(function () {
 
 
     //bonus
-    $('#pic1-btn').click(function () {
-        $('.pics').children().first().insertAfter($('.pics').children().first().next());
-    });
 
-    $('#pic2-btn').click(function () {
-       var random = Math.floor(Math.random() * 2);
-        console.log(random);
+    // Functions
+
+    function btnSwap1() {
+        $('.pics').children().first().insertAfter($('.pics').children().first().next());
+    }
+
+    function btnSwap2() {
+        var random = Math.floor(Math.random() * 2);
 
         if (random === 0) {
-           $('.pics').children().first().next().insertAfter($('.pics').children().last());
-       } else {
+            $('.pics').children().first().next().insertAfter($('.pics').children().last());
+        } else {
             $('.pics').children().first().insertAfter($('.pics').children().first().next());
-       }
-    });
+        }
+    }
 
-    $('#pic3-btn').click(function () {
+    function btnSwap3() {
         $('.pics').children().last().insertBefore($('.pics').children().first().next());
-    });
+    }
+
+
+
+    $('#pic1-btn').click(btnSwap1);
+
+    $('#pic2-btn').click(btnSwap2);
+
+    $('#pic3-btn').click(btnSwap3);
 
 
 });
