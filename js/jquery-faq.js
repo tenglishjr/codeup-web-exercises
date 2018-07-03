@@ -31,6 +31,19 @@
     - The right frame swaps to the left and takes the image from the frame in the center.*/
 
 
+/** jQuery Effects **/
+
+/* Steps:
+
+    - At the top of the page, add a div with two elements, an h1 that reads "Would you like to sign up for our newsletter?" and a span that has an 'x' in it. When the 'x' is clicked, hide the entire div element.
+    - The uls next to each h3 that contain facts about each park should start out hidden, and when the corresponding h3 is clicked, the display of the ul should be toggled with a sliding effect.
+    - After the user has been on the page for 8 seconds, an h2 should fade in that asks the user to register for the site.
+
+    *Bonus*
+
+    - Use a bootstrap alert for the dismissable message that shows on page load.
+    - Use a bootstrap modal for the message that fades in after 8 seconds. You may find that you can use bootstrap's modal methods to achieve the fading effect. */
+
 
 $(function () {
     'use strict';
@@ -40,7 +53,7 @@ $(function () {
         $('dd').toggleClass('invisible');
     });
 
-    //bonus
+    //==bonus
     $('dt').click(function () {
         $(this).toggleClass('highlight');
     });
@@ -52,18 +65,16 @@ $(function () {
         })
     });
 
-    $('h3').click(function () {
-        $(this).next().css('fontWeight', 'bold');
-    });
+    // $('h3').click(function () {
+    //     $(this).next().css('fontWeight', 'bold');
+    // });
 
     $('li').click(function () {
         $(this).parent().children().first().css('color', 'blue');
     });
 
 
-    //bonus
-
-    // Functions
+    //==bonus
 
     function btnSwap1() {
         $('.pics').children().first().insertAfter($('.pics').children().first().next());
@@ -84,12 +95,30 @@ $(function () {
     }
 
 
-
     $('#pic1-btn').click(btnSwap1);
 
     $('#pic2-btn').click(btnSwap2);
 
     $('#pic3-btn').click(btnSwap3);
+
+
+    //========= Effects
+
+    $('#x-out').click(function () {
+        $(this).parent().hide();
+    });
+
+    $('ul').hide();
+    $('#register-prompt').hide();
+
+    $('h3').click(function () {
+       $(this).next().slideToggle();
+    });
+
+    //==bonus
+    setTimeout(function () {
+        $('#register-prompt').modal('show');
+    }, 8000);
 
 
 });
