@@ -13,3 +13,40 @@ dd {
 ul h3 {
     background-color: rgba(154,150,158,0.53);
 }
+
+.frames {
+    height: 225px;
+}
+
+.frames img {
+    width: 100%;
+    height: auto;
+
+}
+
+#border1 {
+    border: rgba(115,75,0,0.65) groove 5px;
+}
+
+#border2 {
+    border: rgba(115,75,0,0.65) ridge 5px;
+}
+
+#border3 {
+    border: rgba(115,75,0,0.65) inset 5px
+}
+
+.smile-puppy {
+    background-image: url('../img/smile-puppy.jpeg');
+    background-size: cover;
+}
+
+.cursing-elephant {
+    background-image: url('../img/cursing-elephant.png');
+    background-size: cover;
+}
+
+.random-integers {
+    background-image: url('../img/random-integers.png');
+    background-size: cover;
+}
