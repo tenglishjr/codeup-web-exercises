@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Store</title>
+</head>
+<body>
+
+<h1>My Tool Store</h1>
+
+<table id="products">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Categories</th>
+        </tr>
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+
+<button id="refresh-btn">Refresh</button>
+
+<script src="./js/jquery-2.2.4.js"></script>
+
+<script>
+(function () {
+        'use strict';
+    // TODO: Create an ajax GET request for /data/inventory.json
+
+    function updateTable() {
+
+        $.get({
+            "url": "data/inventory.json"
+        })
+
+        // TODO: Take the data from inventory.json and append it to the products table
+        //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+        //             its contents and fields
+        //       HINT: You will want to target #insertProducts for your new HTML elements
+
+        .done(function (data) {
+            console.log(data);
+            var output = '', categString = '';
+            data.forEach(function (tool) {
+                output += '<tr><td>' + tool.title + '</td>';
+                output += '<td>' + tool.quantity + '</td>';
+                output += '<td>$' + tool.price + '</td>';
+
+                tool.categories.forEach(function (category, index) {
+                    if (category === "") {
+                        categString = 'None';
+                    } else if (tool.categories.length > 1 && tool.categories.length - 1 !== index) {
+                        categString += category + ', ';
+                    } else {
+                        categString += category;
+                    }
+                });
+                output += '<td>' + categString + '</td></tr>';
+                categString = '';
+            });
+
+            $('#insertProducts').append(output);
+        }).fail(function () {
+            console.log('TEST FAILED');
+        })
+    }
+
+    updateTable();
+
+    $('#refresh-btn').click(function () {
+        $('#insertProducts').html("");
+        updateTable();
+    });
+
+
+})();
+</script>
+
+</body>
+</html>
