@@ -1,0 +1,32 @@
+body {
+    font-family: AppleGothic, Helvetica, sans-serif;
+    background-image: url('../img/ocean-sunrise.jpg');
+    opacity: .7;
+    background-size: cover;
+}
+
+
+.container {
+    background-color: white;
+}
+
+.blog-entry {
+    margin-bottom: 1.5em
+}
+
+.blog-title {
+    font-size: 32px;
+    font-weight: bolder;
+    color: #4f00e7;
+}
+
+.blog-content {
+    font-size: 14px;
+}
+
+.blog-categories,
+.blog-date {
+    font-size: 10px;
+    font-style: italic;
+    color: rgba(0,0,0,0.48);
+}
