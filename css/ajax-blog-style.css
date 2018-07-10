@@ -15,7 +15,7 @@ body {
 }
 
 .blog-title {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: bolder;
     color: #4f00e7;
 }
@@ -28,5 +28,5 @@ body {
 .blog-date {
     font-size: 10px;
     font-style: italic;
-    color: rgba(0,0,0,0.48);
+    color: rgba(0,0,0,0.65);
 }

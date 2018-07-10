@@ -37,11 +37,13 @@
 
                 function updateBlog() {
                     $.get("./data/blog.json").done(function (data) {
-                        var output = '', categoriesList = 'Categories: ';
+                        var output = '';
 
                         data.forEach(function (post) {
-                            output += '<div class="row mb-2 blog-entry"><div class="col-9 blog-title">' + post.title + '</div>';
-                        post.categories.forEach(function (category, index) {
+                            var categoriesList = 'Categories: ';
+                            output += '<div class="row mb-2 blog-entry"><div class="col-12 col-sm-6 blog-title">' + post.title + '</div>';
+
+                            post.categories.forEach(function (category, index) {
                                 if (category === "") {
                                     categoriesList = 'None';
                                 } else if (post.categories.length > 1 && post.categories.length - 1 !== index) {
@@ -50,7 +52,8 @@
                                     categoriesList += category;
                                 }
                             });
-                            output += '<div class="col-3 my-auto blog-categories">' + categoriesList + '<br>Posted: ' + post.date + '</div><div class="col-12"><hr></div></div>';
+
+                            output += '<div class="col-12 col-sm-6 text-sm-right my-auto blog-categories">' + categoriesList + '<br>Posted: ' + post.date + '</div><div class="col-12"><hr></div></div>';
                             output += '<div class="col mb-5 blog-content">' + post.content + '</div>';
                         });
                         $('#posts').append(output);
@@ -62,7 +65,7 @@
                 var blogRefresh = setInterval(function () {
                     $('#posts').html("");
                     updateBlog();
-                }, 10000);
+                }, 30000);
 
                 $('#stop-refresh').click(function () {
                     console.log('BLOG REFRESH ABORTED');
