@@ -19,7 +19,12 @@
             }
 
             .day-night-temp {
-                font-size: 24px;
+                font-size: 36px;
+            }
+
+            #weather-icon {
+                width: 72px;
+                height: auto;
             }
 
             #city-name {
@@ -63,71 +68,15 @@
                 <div class="card-body row bg-dark" id="three-forecast"></div>
             </div>
 
+            <!--MAP-->
+            <div id="map-canvas"></div>
 
         </main>
 
         <script src="js/jquery-2.2.4.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-        <script>
-            $(document).ready(function () {
-
-
-
-                $.get('http://api.openweathermap.org/data/2.5/forecast', {
-                    APPID: '2f220ccab431c5fc5c2eb065de2d4bb8',
-                    id: 4726206,
-                    units: 'imperial'
-                }).done(function (data) {
-                    generateForecast(data);
-                    console.log(data);
-                });
-
-                function generateForecast(obj) {
-
-                    var output = '';
-
-                    $('#city-name').append(obj.city.name);
-
-                    for (var i = 0; i < 17; i += 8) {
-                        // Generates Card to hold weather info
-                        output += '<div class="col-12 col-sm-4 card px-2">';
-                        output += '<div class="card-body row text-center">';
-
-                        // Labels the relevant day of weather data
-                        if (i === 0) {
-                            output += '<div class="col-12 h3">Today</div>';
-                        } else if (i === 8) {
-                            output += '<div class="col-12 h3">Tomorrow</div>';
-                        } else {
-                            output += '<div class="col-12 h3">Later this Week</div>';
-                        }
-
-                        // Displays Day/Night Temps
-                        output += '<div class="col-12 day-night-temp">' + (obj.list[i].main.temp_max).toFixed(0) + 'ºF / ';
-                        output += (obj.list[i + 4].main.temp_min).toFixed(0) + 'ºF</div>';
-
-                        // Shows Relevant Weather Image
-                        output += '<div class="col-12 my-2"><img src="http://openweathermap.org/img/w/' + obj.list[i].weather[0].icon + '.png"></div>';
-
-                        // Displays Clouds Status
-                        output += '<div class="col-12 my-2"><strong>Clouds: </strong>' + obj.list[i].weather[0].description + '</div>';
-
-                        // Displays Humidity
-                        output += '<div class="col-12 my-2"><strong>Humidity: </strong>' + (obj.list[i].main.humidity) + '%</div>';
-
-                        // Displays Wind Speed (mph)
-                        output += '<div class="col-12 my-2"><strong>Wind Speed: </strong>' + (obj.list[i].wind.speed).toFixed(0) + ' mph</div>';
-
-                        // Displays Pressure
-                        output += '<div class="col-12 my-2"><strong>Pressure: </strong>' + (obj.list[i].main.pressure) + ' Pa</div>';
-
-                        output += '</div></div>'
-                    }
-
-                    $('#three-forecast').append(output);
-                }
-            });
-        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfv8xhEZttuOBVaiZlzDytTUUnZCvhmhw&callback=initMap" aysnc defer></script>
+        <script src="js/weather-map.js"></script>
     </body>
 </html>
