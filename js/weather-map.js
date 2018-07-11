@@ -1,40 +1,87 @@
 $(document).ready(function () {
     "use strict";
 
-    var cityID = 4726206;
+    var origLat = 29.4241, origLng = -98.4936;
     var cityCoords = {
-        coord: {
-            lon: 29.4241,
-            lat: 98.4936
-        }
+        lat: origLat,
+        lng: origLng
     };
 
-    displayForecast(cityID);
 
-    $('#search-btn').click(function () {
-        var cityName = $('#city-search').val();
+    /*********** GENERATE MAP & MARKER ***********/
+    var map;
 
-        $.get('./data/city.list.json').done(function (data) {
-            data.forEach(function (city) {
-                if (city.country === 'US' || city.country === 'GB') {
-                    if (city.name === cityName) {
-                        cityID = city.id;
-                    }
-                }
-            });
-            displayForecast(cityID);
-        });
+    var mapOptions = {
+        zoom: 10,
+        center: {
+            lat: cityCoords.lat,
+            lng: cityCoords.lng
+        }
+    };
+    map = new google.maps.Map($('#map-canvas')[0], mapOptions);
 
+    var marker = new google.maps.Marker({
+        position: {
+            lat: cityCoords.lat,
+            lng: cityCoords.lng
+        },
+        map: map,
+        draggable: true
     });
 
-    function displayForecast(idNum) {
+    google.maps.event.addListener(marker, 'dragend', function (evt) {
+        cityCoords['lat'] = evt.latLng.lat();
+        cityCoords['lng'] = evt.latLng.lng();
+        updateInfo(cityCoords.lat, cityCoords.lng);
+    });
+
+
+    /*********************** **********************/
+
+
+    displayForecast(cityCoords.lat, cityCoords.lng);
+    console.log(cityCoords);
+
+
+    $('#search-btn').click(function (evt) {
+        evt.preventDefault();
+        var cityName = $('#city-search').val();
+        getLatLng(cityName);
+    });
+
+
+
+    function getLatLng(cityNameStr) {
+        console.log('getLatLng was called');
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode( {'address': cityNameStr}, function (results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+                cityCoords['lat'] = results[0].geometry.location.lat();
+                cityCoords['lng'] = results[0].geometry.location.lng();
+                updateInfo(cityCoords.lat, cityCoords.lng);
+            } else {
+                console.log('GEOCODE STATUS NOT OK');
+            }
+        })
+    }
+
+
+    function updateInfo(lat, lng) {
+        map.setCenter({ lat: lat, lng: lng });
+        marker.setPosition({ lat: lat, lng: lng});
+        displayForecast(lat, lng);
+    }
+
+
+
+    function displayForecast(lat, lng) {
         $.get('http://api.openweathermap.org/data/2.5/forecast', {
             APPID: '2f220ccab431c5fc5c2eb065de2d4bb8',
-            id: idNum,
+            lat: lat,
+            lon: lng,
             units: 'imperial'
         }).done(function (data) {
             generateForecastData(data);
-            console.log(data);
         });
     }
 
@@ -82,19 +129,6 @@ $(document).ready(function () {
 
         $('#three-forecast').html("");
         $('#three-forecast').append(output);
-    }
-
-    function initMap() {
-        var mapCanvas = $('#map-canvas');
-        var mapOptions = {
-            zoom: 18,
-            center: {
-                lat: 29.42082229999999,
-                lng: -98.49001320000002
-            }
-        };
-
-        var map = new google.maps.Map(mapCanvas, mapOptions);
     }
 
 });
