@@ -1,15 +1,21 @@
 $(document).ready(function () {
     "use strict";
 
+
+    /*************** VARIABLE DECLARATION ***************/
+
     var origLat = 29.4241, origLng = -98.4936;
     var cityCoords = {
         lat: origLat,
         lng: origLng
     };
+    var cityState = getCityName(cityCoords.lat, cityCoords.lng);
 
+    /*************************************************************************
+     * *************************** GENERATE MAP ******************************
+     * ***********************************************************************/
 
-    /*********** GENERATE MAP & MARKER ***********/
-    var map;
+    var map, marker;
 
     var mapOptions = {
         zoom: 10,
@@ -20,7 +26,7 @@ $(document).ready(function () {
     };
     map = new google.maps.Map($('#map-canvas')[0], mapOptions);
 
-    var marker = new google.maps.Marker({
+    marker = new google.maps.Marker({
         position: {
             lat: cityCoords.lat,
             lng: cityCoords.lng
@@ -28,20 +34,10 @@ $(document).ready(function () {
         map: map,
         draggable: true
     });
-
-    google.maps.event.addListener(marker, 'dragend', function (evt) {
-        cityCoords['lat'] = evt.latLng.lat();
-        cityCoords['lng'] = evt.latLng.lng();
-        updateInfo(cityCoords.lat, cityCoords.lng);
-    });
-
-
-    /*********************** **********************/
+    /************************************** ***********************************/
 
 
     displayForecast(cityCoords.lat, cityCoords.lng);
-    console.log(cityCoords);
-
 
     $('#search-btn').click(function (evt) {
         evt.preventDefault();
@@ -50,6 +46,74 @@ $(document).ready(function () {
     });
 
 
+    /*************************************************************************
+     * **************************** FUNCTIONS ********************************
+     * ***********************************************************************/
+
+
+    // Populates weather panels
+    function displayForecast(latNum, lngNum) {
+        $.get('http://api.openweathermap.org/data/2.5/forecast', {
+            APPID: '2f220ccab431c5fc5c2eb065de2d4bb8',
+            lat: latNum,
+            lon: lngNum,
+            units: 'imperial'
+        }).done(function (data) {
+            getCityName(cityCoords.lat, cityCoords.lng);
+            generateForecastData(data);
+        });
+    }
+
+
+    // Generates HTML using OpenWeatherMapAPI object properties & string concatenation
+    function generateForecastData(obj) {
+
+        var panelOutput = '', infoWindowOutput = '';
+
+        generateInfoBox(obj);
+
+        for (var i = 0; i < 17; i += 8) {
+            // Generates Card to hold weather info
+            panelOutput += '<div class="col-12 col-md-4 card">';
+            panelOutput += '<div class="card-body row text-center">';
+
+            // Labels the relevant day of weather data
+            if (i === 0) {
+                panelOutput += '<div class="col-12 h3">Today</div>';
+            } else if (i === 8) {
+                panelOutput += '<div class="col-12 h3">Tomorrow</div>';
+            } else {
+                panelOutput += '<div class="col-12 h3">Later this Week</div>';
+            }
+
+            // Displays Day/Night Temps
+            panelOutput += '<div class="col-12 day-night-temp">' + (obj.list[i].main.temp_max).toFixed(0) + 'ºF / ';
+            panelOutput += (obj.list[i + 4].main.temp_min).toFixed(0) + 'ºF</div>';
+
+            // Shows Relevant Weather Image
+            panelOutput += '<div class="col-12 my-2"><img src="http://openweathermap.org/img/w/' + obj.list[i].weather[0].icon + '.png" id="weather-icon"></div>';
+
+            // Displays Clouds Status
+            panelOutput += '<div class="col-12 my-2"><strong>Clouds: </strong>' + obj.list[i].weather[0].description + '</div>';
+
+            // Displays Humidity
+            panelOutput += '<div class="col-12 my-2"><strong>Humidity: </strong>' + (obj.list[i].main.humidity) + '%</div>';
+
+            // Displays Wind Speed (mph)
+            panelOutput += '<div class="col-12 my-2"><strong>Wind Speed: </strong>' + (obj.list[i].wind.speed).toFixed(0) + ' mph</div>';
+
+            // Displays Pressure
+            panelOutput += '<div class="col-12 my-2"><strong>Pressure: </strong>' + (obj.list[i].main.pressure) + ' Pa</div>';
+            panelOutput += '</div></div>'
+        }
+
+        $('#city-name').html("");
+        $('#city-name').append(cityState);
+
+        $('#three-forecast').html("");
+        $('#three-forecast').append(panelOutput);
+
+    }
 
     function getLatLng(cityNameStr) {
         console.log('getLatLng was called');
@@ -65,70 +129,50 @@ $(document).ready(function () {
         })
     }
 
+    function getCityName(latNum, lngNum) {
+        var jsonLink = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latNum + ',' + lngNum + '&sensor=false';
+        $.get(jsonLink).done(function (data) {
+            var city = '', state = '';
+            console.log(data);
+            data.results[0].address_components.forEach(function (component) {
+                if (component.types[0] === 'locality') {
+                    city += component.long_name;
+                } else if (component.types[0] === 'administrative_area_level_1') {
+                    state += component.short_name;
+                }
 
-    function updateInfo(lat, lng) {
-        map.setCenter({ lat: lat, lng: lng });
-        marker.setPosition({ lat: lat, lng: lng});
-        displayForecast(lat, lng);
-    }
-
-
-
-    function displayForecast(lat, lng) {
-        $.get('http://api.openweathermap.org/data/2.5/forecast', {
-            APPID: '2f220ccab431c5fc5c2eb065de2d4bb8',
-            lat: lat,
-            lon: lng,
-            units: 'imperial'
-        }).done(function (data) {
-            generateForecastData(data);
+                if (city !== '' && state !== '') {
+                    cityState = city + ', ' + state;
+                }
+                console.log(cityState);
+            });
         });
     }
 
-    function generateForecastData(obj) {
 
-        var output = '';
+    function updateInfo(latNum, lngNum) {
+        map.setCenter({ lat: latNum, lng: lngNum });
+        marker.setPosition({ lat: latNum, lng: lngNum});
+        marker.infoWindow.close();
+        displayForecast(latNum, lngNum);
+    }
 
-        $('#city-name').html("");
-        $('#city-name').append(obj.city.name);
 
-        for (var i = 0; i < 17; i += 8) {
-            // Generates Card to hold weather info
-            output += '<div class="col-12 col-sm-4 card px-2">';
-            output += '<div class="card-body row text-center">';
+    function generateInfoBox(obj) {
 
-            // Labels the relevant day of weather data
-            if (i === 0) {
-                output += '<div class="col-12 h3">Today</div>';
-            } else if (i === 8) {
-                output += '<div class="col-12 h3">Tomorrow</div>';
-            } else {
-                output += '<div class="col-12 h3">Later this Week</div>';
-            }
+        marker.infoWindow = new google.maps.InfoWindow({
+            content: '<div class="row"><div class="col-3"><img src="http://openweathermap.org/img/w/' + obj.list[0].weather[0].icon + '.png" id="infoBoxImg"></div>' +
+            '<div class="col-9 pt-2 d-flex align-items-center"><h5 id="infoHead">' + cityState + '</h5></div></div>' +
+            '<div class="row"><div class="col-12 d-flex justify-content-center"><p>Current Temperature: <strong>' + (obj.list[0].main.temp_max).toFixed(0) + 'ºF</strong></p></div></div>'
+        });
 
-            // Displays Day/Night Temps
-            output += '<div class="col-12 day-night-temp">' + (obj.list[i].main.temp_max).toFixed(0) + 'ºF / ';
-            output += (obj.list[i + 4].main.temp_min).toFixed(0) + 'ºF</div>';
+        marker.infoWindow.open(map, marker);
 
-            // Shows Relevant Weather Image
-            output += '<div class="col-12 my-2"><img src="http://openweathermap.org/img/w/' + obj.list[i].weather[0].icon + '.png" id="weather-icon"></div>';
-
-            // Displays Clouds Status
-            output += '<div class="col-12 my-2"><strong>Clouds: </strong>' + obj.list[i].weather[0].description + '</div>';
-
-            // Displays Humidity
-            output += '<div class="col-12 my-2"><strong>Humidity: </strong>' + (obj.list[i].main.humidity) + '%</div>';
-
-            // Displays Wind Speed (mph)
-            output += '<div class="col-12 my-2"><strong>Wind Speed: </strong>' + (obj.list[i].wind.speed).toFixed(0) + ' mph</div>';
-
-            // Displays Pressure
-            output += '<div class="col-12 my-2"><strong>Pressure: </strong>' + (obj.list[i].main.pressure) + ' Pa</div>';
-            output += '</div></div>'
-        }
-
-        $('#three-forecast').html("");
-        $('#three-forecast').append(output);
+        google.maps.event.addListener(marker, 'dragend', function (evt) {
+            cityCoords['lat'] = evt.latLng.lat();
+            cityCoords['lng'] = evt.latLng.lng();
+            updateInfo(cityCoords.lat, cityCoords.lng);
+        });
     }
 
 });

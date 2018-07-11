@@ -18,13 +18,29 @@
                 color: #fff;
             }
 
+            .container {
+                background-color: rgba(167,246,255,0.25)
+            }
+
             .day-night-temp {
                 font-size: 36px;
+            }
+
+            #infoHead {
+                font-size: 18px;
+                font-weight: 800;
+                color: #5913c2;
+                display: inline-block;
             }
 
             #weather-icon {
                 width: 72px;
                 height: auto;
+            }
+
+            #infoBoxImg {
+                width: auto;
+                height: 50px;
             }
 
             #city-name {
@@ -36,7 +52,7 @@
             #map-canvas {
                 height: 550px;
                 width: 100%;
-                margin: 0 0.5em;
+                margin: 0 1em;
             }
 
         </style>
@@ -62,30 +78,31 @@
                 </div>
             </nav>
 
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 h2 mt-3 text-center" id="main-header">3-Day Forecast</div>
+                </div>
 
-            <div class="row">
-                <div class="col-12 h2 mt-3 text-center">3-Day Forecast</div>
-            </div>
 
+                <!--FORECAST-->
+                <div class="card mt-5">
+                    <div class="text-center card-header" id="city-name"></div>
+                    <div class="card-body row bg-dark mx-0" id="three-forecast"></div>
+                </div>
 
-            <!--FORECAST-->
-            <div class="card mt-5">
-                <div class="text-center card-header" id="city-name"></div>
-                <div class="card-body row bg-dark" id="three-forecast"></div>
-            </div>
-
-            <!--MAP-->
-            <div class="row">
-                <div class="col" id="map-canvas"></div>
+                <!--MAP-->
+                <div class="row">
+                    <div class="col" id="map-canvas"></div>
+                </div>
             </div>
 
         </main>
 
         <script src="js/jquery-2.2.4.js"></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfv8xhEZttuOBVaiZlzDytTUUnZCvhmhw"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
         <script type="application/javascript" src="js/weather-map.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfv8xhEZttuOBVaiZlzDytTUUnZCvhmhw"></script>
 
     </body>
 </html>
