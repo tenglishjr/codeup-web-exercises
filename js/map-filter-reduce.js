@@ -30,24 +30,19 @@ const users = [
         languages: ['html', 'css', 'javascript', 'php'],
     },
 ];
-console.log('Original Users List', users);
+
+/** ********************************************************* **/
 
 // .filter function
-let newUserList = users.filter( u => {
-    if (u.languages.length >= 3) {
-        return u;
-    }
-});
+let newUserList = users.filter( u => u.languages.length > 2);
 
-console.log('.filter', newUserList);
+// console.log('.filter\n', newUserList);
 
 
 // .map function
-let emailList = users.map( u => {
-    return u.email;
-});
+let emailList = users.map( u => u.email);
 
-console.log('.map', emailList);
+// console.log('.map\n', emailList);
 
 
 // .reduce function
@@ -56,4 +51,4 @@ let userObject = users.reduce( (accumulator, currentValue) => {
     return accumulator;
 }, {});
 
-console.log('.reduce', userObject);
+console.log('.reduce\n', userObject);
