@@ -18,19 +18,13 @@
 
 const getLastPush = username => {
 
-   return fetch('https://api.github.com/users/' + username + '/events', {headers: {'Authorization': 'token b6124cf342eee3b3bf3f828f4ab2a65438cbd66e'}})
+   const output = fetch('https://api.github.com/users/' + username + '/events', {headers: {'Authorization': 'token b6124cf342eee3b3bf3f828f4ab2a65438cbd66e'}})
     .then(res => res.json())
-    .then(res => {
+    .then(e => e.filter(event => event.type === 'PushEvent'))
+    .then (event => event[0].created_at.substr(0, 10));
 
-       let time = '';
-       for (let i = 0; i < res.length; i++) {
-          if (res[i].type === 'PushEvent') {
-             time += res[i].created_at;
-             break;
-          }
-       }
-       console.log(username, `\nLast push: ${time}`);
-    });
+    return output;
 };
 
-getLastPush('tenglishjr');
+getLastPush('tenglishjr')
+    .then(data => console.log('Last Push:\n', data));
