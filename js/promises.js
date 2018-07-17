@@ -16,41 +16,18 @@
 
 // Create a function that accepts a github username, and returns a promise that resolves with the date of the last push that user made. Reference the github api documentation to achieve this.
 
-<<<<<<< HEAD
+
 const getLastPush = username => {
 
-   const output = fetch('https://api.github.com/users/' + username + '/events', {headers: {'Authorization': 'token b6124cf342eee3b3bf3f828f4ab2a65438cbd66e'}})
+   return fetch('https://api.github.com/users/' + username + '/events', {headers: {'Authorization': 'token b6124cf342eee3b3bf3f828f4ab2a65438cbd66e'}})
     .then(res => res.json())
     .then(e => e.filter(event => event.type === 'PushEvent'))
-    .then (event => event[0].created_at.substr(0, 10));
-
-    return output;
+    .then (event => event[0].created_at.substr(0, 10))
+    .catch(err => console.log(err));
 };
 
 getLastPush('tenglishjr')
     .then(data => console.log('Last Push:\n', data));
-=======
-// const getLastPush = username => {
-//
-//    return fetch('https://api.github.com/users/' + username + '/events', {headers: {'Authorization': 'token b6124cf342eee3b3bf3f828f4ab2a65438cbd66e'}})
-//     .then(res => res.json())
-//     .then(res => {
-//
-//        let time = '';
-//        for (let i = 0; i < res.length; i++) {
-//           if (res[i].type === 'PushEvent') {
-//              time += res[i].created_at;
-//              break;
-//           }
-//        }
-//        console.log(username, `\nLast push: ${time}`);
-//     })
-//    .catch(err => console.error(err));
-// };
-//
-// getLastPush('tenglishjr');
-
-
 
 
 // =================== BONUS exercise 1
@@ -119,4 +96,3 @@ const colorPref = username => {
 // Create a function that fetches this array and returns an array of homeworlds for the characters.
 //     It will look something like the following...
 // ['Jakku', 'Tatooine', 'Tatooine']
->>>>>>> 111833a852672883d095aa709b843865e38bdb4f
